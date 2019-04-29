@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Bangers', cursive;
+    font-weight: 400;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.setting-bl{
+    max-width: 1030px;
+    width: 100%;
+    height: 601px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*background: #ffffff0d;*/
+    background:#ffffff00;
+    padding: 11px 6px 22px 6px;
+    border-radius: 26px;
+    box-sizing: border-box;
+}
+
+.black-bl{
+    /*background: #0e0e0e;*/
+    /*background-image: url("https://stmed.net/sites/default/files/hacker-wallpapers-30679-4582054.jpg");*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.setting-header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 73px;
+    padding: 3px 14px;
+    box-sizing: border-box;
+    margin-bottom: 13px;
+}
+
+.setting-logo{
+    width: 50%;
+}
+
+.setting-logo i {
+    font-size: 41px;
+    color: white;
+    position: relative;
+    top: 5px;
+}
+
+
+.setting-logo h2{
+    color: white;
+    letter-spacing: 6px;
+    padding-left: 9px;
+    font-size: 34px;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    text-transform: uppercase;
+}
+
+.setting-nav-menu{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.setting-nav-menu li{
+    padding: 9px 18px;
+}
+.setting-nav-menu li a:hover{
+    color:#c3bebe;
+}
+.setting-nav-menu li a{
+    color: white;
+    font-size: 15px;
+    letter-spacing: 4px;
+
+}
+
+.setting-content{
+    display: flex;
+    width: 100%;
+    min-height: 480px;
+    box-sizing: border-box;
+    padding: 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.setting-content .column{
+    min-height: 480px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column-1{
+    align-content: space-between;
+    width: 24%;
+}
+
+.left-menu{
+    width: 100%;
+    min-height: 480px;
+    background: black;
+    border-radius: 23px 0 0 23px;
+}
+
+.column-right{
+    width: 74%;
+    background: #ffffff1c;
+    border-radius: 0 23px 23px 0;
+}
+
+
+
+
+
