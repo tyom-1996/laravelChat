@@ -1,5 +1,8 @@
 {{-- COPY SITE https://beta.meetme.com/#home--}}
 
+        {{dd($country[0]->country_name)}}
+
+
 
 <!doctype html>
 <html lang="en">
