@@ -14,13 +14,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" href="{{asset('/js/alisa-2.0/css/alisa.css')}}">
+<link rel="stylesheet" href="{{asset('alisa-2.1')}}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{asset('/js/alisa-2.0/diff.js')}} " ></script>
-<script src="{{asset('/js/alisa-2.0/gideon.js')}} " ></script>
-<script src="{{asset('/js/alisa-2.0/voice_assistant.js')}} " ></script>
+<script src="{{asset('alisa-2.1')}}"></script>
+<script src="{{asset('voice-assistanvoice-assistant.jspt>
 <title>Document</title>
 
 </head>

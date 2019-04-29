@@ -382,6 +382,9 @@ header{
     width: 30%;
 }
 
+.row5-right-bl button:hover{
+    background: #54be54ed;
+}
 .row5-right-bl button{
     padding: 8px 13px;
     font-size: 18px;
@@ -395,6 +398,7 @@ header{
     width: 100%;
     line-height: 1.33;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 /*FOOTER*/

@@ -1,30 +1,30 @@
-function Alisa() {
-
-
-
-    this.audio;
-    this.speak;
-    this.finalTranscript = '';
-    this.toggleOnData = [];
-    this.toggleOffData = [];
-    if (localStorage.getItem('switch') == null) {
-        localStorage.setItem('switch', true)
+Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+    get: function() {
+        return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
     }
-    this.switch = JSON.parse(localStorage.getItem(('switch')));
+})
 
+class Alisa {
 
-    Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
-        get: function() {
-            return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+    constructor(){
+
+        this.audio;
+        this.speak;
+        this.finalTranscript = '';
+        this.toggleOnData = [];
+        this.toggleOffData = [];
+        if (localStorage.getItem('switch') == null)
+        {
+            localStorage.setItem('switch', true)
         }
-    })
+        this.switch = JSON.parse(localStorage.getItem(('switch')));
 
-    this.random_answer = (array) => {
-        let num = Math.floor(Math.random() * array.length - 1) + 1;
-        array[num].answer()
     }
 
-    this.say = (text) => {
+
+
+    say(text)
+    {
         console.log('micrafon off')
         this.recognition.stop()
         this.speak = new Audio('https://code.responsivevoice.org/getvoice.php?t=' + text + '&tl=ru&sv=g1&vn=&pitch=0.5&rate=0.5&vol=1&gender=female');
@@ -32,19 +32,35 @@ function Alisa() {
         this.speak.play()
     }
 
-    this.gideon_test = (comands, my_comand) => {
-        console.log(comands, my_comand)
-        this.defoltComands(comands);
-        this.command_execution(comands, my_comand);
+    random_answer (array)
+    {
+        let num = Math.floor(Math.random() * array.length - 1) + 1;
+        array[num].answer()
     }
 
+    say(text)
+    {
+        console.log('micrafon off')
+        this.recognition.stop()
+        this.speak = new Audio('https://code.responsivevoice.org/getvoice.php?t=' + text + '&tl=ru&sv=g1&vn=&pitch=0.5&rate=0.5&vol=1&gender=female');
+        this.speak.id = 'id'
+        this.speak.play()
+    }
 
-    this.start = () => {
+    alisa_test(comands, my_comand)
+    {
+        this.defoltComands(comands);
+        this.command_execution(comands, my_comand);
+        this.toggleOn(this.my_comand, my_comand);
+        this.toggleOff(this.my_comand, my_comand)
+    }
+
+    start()
+    {
         window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
         this.recognition = new window.SpeechRecognition();
         this.recognition.lang = 'ru-RU';
         this.recognition.maxAlternatives = 1;
-        //  this.recognition.continuous = true;
         this.recognition.interimResults = true;
         this.recognition.start()
         console.log(this.recognition)
@@ -75,7 +91,8 @@ function Alisa() {
 
 
 
-    this.toggleOn = (my_comand, toggleOnData) => {
+    toggleOn(my_comand, toggleOnData)
+    {
         for (let i = 0; i < toggleOnData.length; i++) {
             if (toggleOnData[i].question == my_comand) {
                 this.say(toggleOnData[i].answer);
@@ -86,7 +103,8 @@ function Alisa() {
         }
     }
 
-    this.toggleOff = (my_comand, toggleOffData) => {
+    toggleOff(my_comand, toggleOffData)
+    {
         for (let i = 0; i < toggleOffData.length; i++) {
             if (toggleOffData[i].question == my_comand) {
                 this.say(toggleOffData[i].answer);
@@ -97,7 +115,8 @@ function Alisa() {
         }
     }
 
-    this.SetComands = (comands) => {
+    SetComands(comands)
+    {
 
         comands = comands ? comands : {}
 
@@ -107,7 +126,7 @@ function Alisa() {
 
             this.interimTranscript = '';
 
-            for (i = event.resultIndex, len = event.results.length; i < len; i++) {
+            for (let i = event.resultIndex, len = event.results.length; i < len; i++) {
 
                 this.transcript = event.results[i][0].transcript.toLowerCase();
 
@@ -118,8 +137,6 @@ function Alisa() {
 
                     console.log(`Я:${ this.my_comand }`);
 
-
-                    console.log(this.switch, 'sss')
                     if (this.switch == false) {
                         this.command_execution(comands, this.my_comand);
                     }
@@ -133,7 +150,7 @@ function Alisa() {
 
                 }
 
-            }    
+            }
 
             if (this.switch === false) {
                 document.getElementById('result').innerHTML = this.finalTranscript.toLocaleLowerCase() + '<hr><i style="color:#ddd;">' + this.interimTranscript + '</>';
@@ -144,12 +161,15 @@ function Alisa() {
 
 
 
-    this.stop = () => {
+
+    stop()
+    {
         this.recognition.stop();
     }
 
-    this.command_execution = (comands, my_comand) => {
-        for (key in comands) {
+    command_execution(comands, my_comand)
+    {
+        for (let key in comands) {
             //-----DBOYNAYA KOMANDA------------------
             if (key.indexOf('||') > -1) {
                 this.two_comands_arr = key.split('||')
@@ -170,22 +190,25 @@ function Alisa() {
                     this.keyfirstWord = key.replace(/ .*/, '');
                     this.mycomandfirstWord = my_comand.replace(/ .*/, '');
 
-                    for (j = 0; j < this.diff.length; j++) {
-                        if (this.diff[j].added != true) {
+                    for (let j = 0; j < this.diff.length; j++ ) {
+
+                        if ( this.diff[j].added != true ) {
                             this.res1 += this.diff[j].value;
                         }
-                        if (this.diff[j].value != '*') {
+                        if ( this.diff[j].value != '*' ) {
                             this.res2 += this.diff[j].value
                         }
-                        if (this.diff[j].added == true) {
+                        if ( this.diff[j].added == true ) {
                             this.data.push(this.diff[j].value)
                         }
+
                     }
 
-                    if (this.res2 == my_comand && this.mycomandfirstWord == this.keyfirstWord) {
+                    if ( this.res2 == my_comand && this.mycomandfirstWord == this.keyfirstWord ) {
                         this.recognition.stop()
                         comands[key](this.data);
                     }
+
                 } else {
 
                     continue;
@@ -206,8 +229,8 @@ function Alisa() {
 
 
 
-
-    this.defoltComands = (comands) => {
+    defoltComands(comands)
+    {
 
         comands['перезагрузить||обновить||обнови страницу||обновить страницу||перезагрузи страницу'] = () => {
             this.say('команда принята,обновляю страницу', "Russian Male")
@@ -228,13 +251,15 @@ function Alisa() {
             this.say("чем желаете заняться?")
         }
         comands["перевод слова *"] = (data) => {
-            window.open("https://translate.google.com/#view=home&op=translate&sl=ru&tl=en&text=" + encodeURIComponent(data[0]))
-            this.say('выполняю перевод слова,' + data[0])
+            window.open(
+                `https://translate.google.com/#view=home&op=translate&sl=ru&tl=en&text=${encodeURIComponent(data[0])}`
+            )
+            this.say(`выполняю перевод слова,${data[0]}`)
         }
         comands["найди в интернете *"] = (data) => {
             if (data.length > 0) {
-                window.open("http://www.google.com/search?q=" + encodeURIComponent(data[0]))
-                alisa.say('найдены следующие результаты по запросу,' + data[0])
+                window.open(`http://www.google.com/search?q=${encodeURIComponent(data[0])}`)
+                alisa.say(`найдены следующие результаты по запросу,${data[0]}`)
             } else {
                 alisa.say('команда не выполнена.пожалуйста,введите ключевые слова для поиска')
             }
@@ -321,6 +346,7 @@ function Alisa() {
         }
 
     }
+
 
 
 }

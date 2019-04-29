@@ -8,6 +8,7 @@
    }
 
 
+
    alisa.toggleOnData = [
        {'question':'алиса','answer':'слушаю вас'},
        {'question':'активация','answer':'ну что родной? начнём?'}
@@ -2611,12 +2612,6 @@
        }
    }
        alisa.SetComands(comands)
-       // alisa.alisa_test(comands,'сколько времени');
-
-
-
-
-
-
+     // alisa.alisa_test(comands,'отдохни')
 
 
