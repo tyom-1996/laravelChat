@@ -1,6 +1,6 @@
 {{-- COPY SITE https://beta.meetme.com/#home--}}
 
-        {{dd($country[0]->country_name)}}
+{{--        {{dd($country[0]->country_name)}}--}}
 
 
 
@@ -153,7 +153,9 @@
                         </div>
 
                         <div class="country-bl row4-block">
-                            <input  type="text" class="country-btn row4-select" value="">
+                            <select name="country" class="country-select row4-select" >
+                            {{print $country_options}}
+                            </select>
                         </div>
                     </div>
 

@@ -10,6 +10,14 @@ class registerController extends Controller
     public function index()
     {
         $country = DB::select('select * from countries ');
-        return view('register',['country' => $country ]);
+
+        $country_options = '';
+
+        for($i = 0; $i < count($country); $i++ ){
+             $name = $country[$i]->country_name;
+            $country_options .= "<option value='$name'>$name </option>";
+        }
+
+        return view('register',['country_options' => $country_options ]);
     }
 }
