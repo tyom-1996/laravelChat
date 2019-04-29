@@ -135,20 +135,21 @@
                         <div class="day-bl row4-block">
                             <select name="day_select" class="row4-select day-select">
                                 <option disabled="" selected="">Day</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                @for($i=31; $i>0; $i-- )
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
                             </select>
                         </div>
 
                         <div class="year-bl row4-block">
                             <select name="year_select" class="row4-select year-select">
+
                                 <option disabled="" selected="">Year</option>
-                                <option value="2019">2019</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
+
+                                @for($i=2019; $i>1960; $i-- )
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+
                             </select>
                         </div>
 
