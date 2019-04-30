@@ -13,9 +13,16 @@ class accountController extends Controller
     {
         if ( Auth::user() )
         {
-           print_r('dss');
             return view('account');
+        }else{
+            return redirect()->route('register_page');
         }
 
+    }
+
+    public function logOut()
+    {
+        Auth::logout();
+        redirect()->route('register_page');
     }
 }

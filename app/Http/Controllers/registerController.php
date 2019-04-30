@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\User;
-use Auth;
 use Hash;
 
 class registerController extends Controller
@@ -36,6 +36,12 @@ class registerController extends Controller
         $input['password'] = bcrypt($input['password']);
         User::create($input);
 
-        return redirect()->to('/account');
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect()
+                ->route('account')
+                ->with('Welcome! Your account has been successfully created!');
+        }
+//        return redirect()->to('/account');
     }
 }

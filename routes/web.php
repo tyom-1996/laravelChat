@@ -26,3 +26,4 @@ Route::get('/login','loginController@index');
 //Account
 
 Route::get('/account','accountController@index')->name('account');
+Route::get('/logout','accountController@logOut')->name('logout');
