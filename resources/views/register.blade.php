@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{asset('/img/icon.png  ')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('/css/register/register.css')}}">
@@ -30,7 +31,13 @@
     }
 </style>
 
-
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <body>
     <header>
         <div class="header-wrapp">
@@ -77,103 +84,127 @@
                 </div>
 
                     {{--FORM--}}
-                <div class="content-form-block-right">
-                    <div class="content-form-block-row1" >
-                        <h3>New to MeetMe?</h3>
-                        <button class="facebook-btn">
+
+
+
+                <form method="POST" action="/register" class="content-form-block-right">
+
+
+                          {{ csrf_field() }}
+                        <div class="content-form-block-row1" >
+                            <h3>New to MeetMe?</h3>
+                            <button class="facebook-btn">
                            <span>
                                <i class="fab fa-facebook-f"></i>
                            </span>
-                            Quick signup with Facebook
-                        </button>
-                    </div>
-
-                    <div class="content-form-block-row2" >
-                        <span>or sign up with email</span>
-                    </div>
-
-                    <div class="content-form-block-row3" >
-                        <div class="name-bl row3-block">
-                            <input placeholder="Name" type="text" class="name-inp row3-inp" name="name_inp">
-                        </div>
-                        <div class="email-bl row3-block">
-                            <input placeholder="Email" type="email" class="email-inp row3-inp" name="email_inp">
-                        </div>
-                        <div class="password-bl row3-block">
-                            <input placeholder="Password" type="password" class="password-inp row3-inp" name="password_inp">
-                        </div>
-                    </div>
-
-
-                    <div class="content-form-block-row4" >
-
-                        <div class="gender-bl row4-block">
-                            <select name="gender_select" class="row4-select gender-select">
-                                <option selected disabled>Gender</option>
-                                <option value="">Female</option>
-                                <option value="">Male</option>
-                            </select>
+                                Quick signup with Facebook
+                            </button>
                         </div>
 
-                        <div class="month-bl row4-block">
-                            <select name="month_select" class="row4-select month-select">
-                                <option disabled="" selected="">Month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        </div>
-                        <div class="day-bl row4-block">
-                            <select name="day_select" class="row4-select day-select">
-                                <option disabled="" selected="">Day</option>
-                                @for($i=31; $i>0; $i-- )
-                                    <option value="{{$i}}">{{$i}}</option>
-                                @endfor
-                            </select>
+                        <div class="content-form-block-row2" >
+                            <span>or sign up with email</span>
                         </div>
 
-                        <div class="year-bl row4-block">
-                            <select name="year_select" class="row4-select year-select">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                                <option disabled="" selected="">Year</option>
-
-                                @for($i=2019; $i>1960; $i-- )
-                                    <option value="{{$i}}">{{$i}}</option>
-                                @endfor
-
-                            </select>
+                        <div class="content-form-block-row3" >
+                            <div class="name-bl row3-block">
+                                <input placeholder="Name" type="text" class="name-inp row3-inp" name="name">
+                                <div class="error-bl">required</div>
+                            </div>
+                            <div class="email-bl row3-block">
+                                <input placeholder="Email" type="email" class="email-inp row3-inp" name="email">
+                                <div class="error-bl">invalid email address</div>
+                            </div>
+                            <div class="password-bl row3-block">
+                                <input placeholder="Password" type="password" class="password-inp row3-inp" name="password">
+                                <div class="error-bl">too short</div>
+                            </div>
                         </div>
 
-                        <div class="country-bl row4-block">
-                            <select name="country" class="country-select row4-select" >
-                            {{print $country_options}}
-                            </select>
+
+                        <div class="content-form-block-row4" >
+
+                            <div class="gender-bl row4-block">
+                                <select name="gender" class="row4-select gender-select">
+                                    <option selected disabled>Gender</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Male">Male</option>
+                                </select>
+                                <div class="error-bl">required</div>
+                            </div>
+
+                            <div class="month-bl row4-block">
+                                <select name="month" class="row4-select month-select">
+                                    <option disabled="" selected="">Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <div class="error-bl">required</div>
+                            </div>
+                            <div class="day-bl row4-block">
+                                <select name="day" class="row4-select day-select">
+                                    <option disabled="" selected="">Day</option>
+                                    @for($i=31; $i>0; $i-- )
+                                        <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
+                                </select>
+                                <div class="error-bl">required</div>
+                            </div>
+
+                            <div class="year-bl row4-block">
+                                <select name="year" class="row4-select year-select">
+
+                                    <option disabled="" selected="">Year</option>
+
+                                    @for($i=2019; $i>1960; $i-- )
+                                        <option value="{{$i}}">{{$i}}</option>
+                                    @endfor
+
+                                </select>
+                                <div class="error-bl">required</div>
+                            </div>
+
+                            <div class="country-bl row4-block">
+                                <select name="country" class="country-select row4-select" >
+                                    {{print $country_options}}
+                                </select>
+                                <div class="error-bl">required</div>
+                            </div>
                         </div>
-                    </div>
 
 
-                    <div class="content-form-block-row5" >
-                        <div class="row5-left-bl">
-                            <small>
-                                By clicking "Sign Up Free!" you are agreeing to the <a href="#terms">Terms</a>, and to receive MeetMe email. You are also agreeing that others will be able to see info you provide on your profile.
-                            </small>
+                        <div class="content-form-block-row5" >
+                            <div class="row5-left-bl">
+                                <small>
+                                    By clicking "Sign Up Free!" you are agreeing to the <a href="#terms">Terms</a>, and to receive MeetMe email. You are also agreeing that others will be able to see info you provide on your profile.
+                                </small>
+                            </div>
+
+                            <div class="row5-right-bl">
+                                <button>Sign Up Free!</button>
+                            </div>
                         </div>
 
-                        <div class="row5-right-bl">
-                            <button>Sign Up Free!</button>
-                        </div>
-                    </div>
-
-                </div>
+                </form>
 
             </div>
         </div>

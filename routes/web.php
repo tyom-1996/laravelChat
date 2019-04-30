@@ -14,6 +14,15 @@
 Route::get('/',function(){
     return redirect()->route('register');
 });
-Route::get('/register','registerController@index')->name('register');
+
+//REGISTER
+Route::get('/register','registerController@index')->name('register_page');
+Route::post('/register','registerController@register')->name('register');
+
+//LOGIN
 Route::get('/login','loginController@index');
 
+
+//Account
+
+Route::get('/account','accountController@index')->name('account');

@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use Auth;
+use Hash;
 
 class registerController extends Controller
 {
+
     public function index()
     {
         $country = DB::select('select * from countries ');
@@ -19,5 +23,19 @@ class registerController extends Controller
         }
 
         return view('register',['country_options' => $country_options ]);
+    }
+
+    public function register(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:users'
+        ]);
+
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+        User::create($input);
+
+        return redirect()->to('/account');
     }
 }
