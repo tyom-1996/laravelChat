@@ -1,0 +1,133 @@
+
+.login-bg{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left:0;
+    top:0;
+    background: #000000a6;
+    z-index: 2;
+    display: none;
+}
+
+.login-wr{
+    max-width: 393px;
+    width: 100%;
+    height: 360px;
+    background-color: rgba(109,74,146,.9);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 11px;
+    z-index: 5;
+    display: none;
+}
+
+.open-login-form{
+    display: block;
+}
+
+.login-bl{
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 7px;
+    padding-top: 44px;
+    box-sizing: border-box;
+}
+
+#login-btn{
+    padding: 8px 13px;
+    font-size: 18px;
+    white-space: normal;
+    color: #fff;
+    background-color: #4ab84a;
+    border-width: 0;
+    box-shadow: inset 0 0 1px #55af22;
+    position: relative;
+    display: block;
+    line-height: 1.33;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 287px;
+}
+
+.login_email{
+    width: 100%;
+    margin: auto;
+    display: block;
+    max-width: 287px;
+    padding: 9px 10px;
+    line-height: 1.33;
+    border-radius: 6px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    margin-bottom: 20px;
+}
+
+.login_password{
+    width: 100%;
+    margin: auto;
+    display: block;
+    max-width: 287px;
+    padding: 9px 10px;
+    line-height: 1.33;
+    border-radius: 6px;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+
+.facebook-btn-login{
+    color: #fff;
+    background-color: #3b5998;
+    border-width: 0;
+    box-shadow: inset 0 0 1px #5066aa;
+    position: relative;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 14px;
+    margin: 30px auto;
+}
+.facebook-btn-login span{
+    display: flex;
+    width: 36px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #ffffff38;
+    margin-right: 6px;
+}
+
+.facebook-btn-login span i{
+    font-size: 20px;
+}
+
+.login-form label{
+    width: 100%;
+    margin: auto;
+    display: block;
+    max-width: 287px;
+    text-align: left;
+    color: red;
+    font-size: 12px;
+}

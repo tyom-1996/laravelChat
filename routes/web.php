@@ -19,11 +19,11 @@ Route::get('/',function(){
 Route::get('/register','registerController@index')->name('register_page');
 Route::post('/register','registerController@register')->name('register');
 
+
 //LOGIN
-Route::get('/login','loginController@index');
+Route::post('/login','loginController@login');
 
 
 //Account
-
 Route::get('/account','accountController@index')->name('account');
 Route::get('/logout','accountController@logOut')->name('logout');

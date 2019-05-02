@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('day');
             $table->string('year');
             $table->string('country');
+            $table->string('remember_token');
             $table->timestamps();
         });
     }

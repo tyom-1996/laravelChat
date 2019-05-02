@@ -4,33 +4,50 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use App\User;
 use Hash;
 
 class registerController extends Controller
 {
 
+
     public function index()
     {
-        $country = DB::select('select * from countries ');
-
-        $country_options = '';
-
-        for($i = 0; $i < count($country); $i++ ){
-             $name = $country[$i]->country_name;
-            $country_options .= "<option value='$name'>$name </option>";
+        if (Auth::user()){
+            return redirect()->route('account');
         }
-
-        return view('register',['country_options' => $country_options ]);
+        $country = DB::select('select * from countries ');
+        return view('register',['country_data' => $country ]);
     }
 
     public function register(Request $request)
     {
 
-        $validatedData = $request->validate([
-            'email' => 'required|email|unique:users'
-        ]);
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'gender' => 'required',
+            'month' => 'required',
+            'day' => 'required',
+            'year' => 'required',
+            'country' => 'required'
+        ];
+
+        $message = [
+            'name.required' => 'This field required.',
+            'email.required' => 'This field required.',
+            'email.unique' => 'Email already exists.',
+            'password.min' => 'Password must be 6 char',
+            'gender.required' => 'This field required.',
+            'month.required' => 'This field required.',
+            'day.required' => 'This field required.',
+            'year.required' => 'This field required.',
+            'country.required' => 'This field required.'
+        ];
+
+        $validatedData = $request->validate($rules,$message);
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
@@ -42,6 +59,6 @@ class registerController extends Controller
                 ->route('account')
                 ->with('Welcome! Your account has been successfully created!');
         }
-//        return redirect()->to('/account');
+
     }
 }
