@@ -57,14 +57,35 @@ class Alisa {
         this.toggleOff(this.my_comand, my_comand)
     }
 
-    start()
-    {
+
+    alisaActionsBlock(){
         $(document).ready(function(){
-            $( ".box" ).draggable({
+
+            $('body').append(`
+                <div id="box1" class="box blurred-bg tinted">
+                    <div class="alisa-box-actions">
+                         <div class="alisa-box-actions-item alisa-box-actions-rollup"><i class="far fa-window-minimize"></i></div> <!--свернуть -->
+                         <div class="alisa-box-actions-item alisa-box-actions-expand"><i class="far fa-window-restore"></i></div>  <!--развернуть -->
+                         <div class="alisa-box-actions-item alisa-box-actions-close"><i class="fas fa-times"></i></div> <!--закрыть-->
+                    </div>
+                    
+                    <div class="alisa-box-bg"></div>
+                    
+                    <div class="alisa-box-content">
+                         <h1 style="color:white;">Alisa</h1>
+                    </div>
+                </div>
+            `)
+            $(".box").draggable({
                 width:'300px'
             });
         })
+    }
 
+    start()
+    {
+
+        this.alisaActionsBlock();
 
         window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
         this.recognition = new window.SpeechRecognition();

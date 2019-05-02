@@ -1,7 +1,6 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Bangers', cursive;
     font-weight: 400;
 }
 
@@ -133,7 +132,7 @@ a{
 }
 
 
-/*********ALISA DRAGGABLE STYLES******************/
+/*********ALISA DRAGGABLE STYLES START******************/
 
 .blurred-bg {
     background-image: url("https://i.pinimg.com/originals/e7/3e/97/e73e97c11783dfd7dc72ecbf522a17a6.jpg");
@@ -150,7 +149,8 @@ a{
     border-radius: 5px;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 20px;
+    padding: 6px;
+    padding-top: 22px;
     text-align: center;
     box-sizing: border-box;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
@@ -162,14 +162,64 @@ a{
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
 }
 
-.box .content {
-    margin: auto;
+.box .alisa-box-bg {
+    background: #0000007a;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 2px;
+    border-radius: 5px;
 }
 
-.box h1{
+.box .alisa-box-content{
+    position: absolute;
+    z-index: 3;
+    width: calc(100% - 28px);
+    height: calc(100% - 28px);
+}
+
+.box .alisa-box-content h1{
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+.alisa-box-actions{
+    width: 75px;
+    position: absolute;
+    z-index: 4;
+    height: 18px;
+    background: #ffffff3b;
+    top: 2px;
+    right: 7px;
+    display: flex;
+}
+
+.alisa-box-actions-item i {
+    font-size: 10px;
+    color: white;
+    cursor: pointer;
+}
+.alisa-box-actions-item{
+    width: 25px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.alisa-box-actions-close{
+    background: #d65050;
+}
+
+.alisa-box-actions-rollup:hover,.alisa-box-actions-expand:hover{
+    background: #4e4ef1;
+    color: white;
+}
+
+
+
+/*********ALISA DRAGGABLE STYLES END******************/
 
 
 

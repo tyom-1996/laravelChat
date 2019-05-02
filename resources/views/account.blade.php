@@ -106,15 +106,6 @@
 </div>
 
 
-<div id="box1" class="box blurred-bg tinted">
-    <div class="content">
-    </div>
-    <h1 style="color:white;">Alisa</h1>
-</div>
-<script>
-
-</script>
-
 
 </body>
 </html>
