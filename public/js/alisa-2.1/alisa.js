@@ -8,6 +8,8 @@ class Alisa {
 
     constructor(){
 
+
+
         this.audio;
         this.speak;
         this.finalTranscript = '';
@@ -57,6 +59,13 @@ class Alisa {
 
     start()
     {
+        $(document).ready(function(){
+            $( ".box" ).draggable({
+                width:'300px'
+            });
+        })
+
+
         window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
         this.recognition = new window.SpeechRecognition();
         this.recognition.lang = 'ru-RU';

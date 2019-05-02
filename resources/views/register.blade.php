@@ -16,13 +16,18 @@
     <link rel="stylesheet" href="{{asset('/css/register/register.css')}}">
     <link rel="stylesheet" href="{{asset('/css/register/register-response.css')}}">
     <link rel="stylesheet" href="{{asset('/css/login/login.css')}}">
+
+{{--ALISA START--}}
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('/js/alisa-2.1/css/alisa.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="{{asset('/js/register/script.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="{{asset('/js/alisa-2.1/diff.js')}} " ></script>
     <script src="{{asset('/js/alisa-2.1/alisa.js')}}"></script>
     <script src="{{asset('/js/alisa-2.1/voice-assistant.js')}} " ></script>
 
+{{--ALISA END--}}
+    <script src="{{asset('/js/register/script.js')}}"></script>
     <title>Document</title>
 </head>
 <style>
