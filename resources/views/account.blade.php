@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset('/js/alisa-2.1/css/alisa.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="{{asset('/js/alisa-2.1/alisa-actions.js')}} " ></script>
     <script src="{{asset('/js/alisa-2.1/diff.js')}} " ></script>
     <script src="{{asset('/js/alisa-2.1/alisa.js')}}"></script>
     <script src="{{asset('/js/alisa-2.1/voice-assistant.js')}} " ></script>

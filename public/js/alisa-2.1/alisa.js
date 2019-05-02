@@ -64,9 +64,9 @@ class Alisa {
             $('body').append(`
                 <div id="box1" class="box blurred-bg tinted">
                     <div class="alisa-box-actions">
-                         <div class="alisa-box-actions-item alisa-box-actions-rollup"><i class="far fa-window-minimize"></i></div> <!--свернуть -->
-                         <div class="alisa-box-actions-item alisa-box-actions-expand"><i class="far fa-window-restore"></i></div>  <!--развернуть -->
-                         <div class="alisa-box-actions-item alisa-box-actions-close"><i class="fas fa-times"></i></div> <!--закрыть-->
+                         <div id="rollup" class="alisa-box-actions-item alisa-box-actions-rollup"><i class="far fa-window-minimize"></i></div> <!--свернуть -->
+                         <div id="expand" class="alisa-box-actions-item alisa-box-actions-expand"><i class="far fa-window-restore"></i></div>  <!--развернуть -->
+                         <div id="close" class="alisa-box-actions-item alisa-box-actions-close"><i class="fas fa-times"></i></div> <!--закрыть-->
                     </div>
                     
                     <div class="alisa-box-bg"></div>
@@ -76,9 +76,7 @@ class Alisa {
                     </div>
                 </div>
             `)
-            $(".box").draggable({
-                width:'300px'
-            });
+
         })
     }
 
