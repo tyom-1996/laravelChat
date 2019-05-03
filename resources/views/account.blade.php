@@ -78,8 +78,20 @@
         </div>
 
         <div class="sect-1-rightmenu">
-            <div class="sect-1-rightmenu-footer">
+            <div class="sect-1-rightmenu-content">
 
+            </div>
+
+            <div class="sect-1-rightmenu-footer">
+                    <div class="sect-1-rightmenu-footer-left">
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                    </div>
+
+                    <div class="sect-1-rightmenu-footer-right">
+
+                    </div>
             </div>
         </div>
 

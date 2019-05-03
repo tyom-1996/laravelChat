@@ -178,6 +178,30 @@ input:focus,input:active{
     background: #32394d;
 }
 
+.sect-1-rightmenu-content{
+    width: 100%;
+    height: calc(100% - 72px);
+}
+
+.sect-1-rightmenu-footer{
+    width: 100%;
+    height: 70px;
+    background: #2f3547;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.sect-1-rightmenu-footer-left{
+    width: 50%;
+    height: 100%;
+}
+
+.sect-1-rightmenu-footer-right{
+    width: 50%;
+    height: 100%;
+}
+
 
 
 /*SECTION 2*/
