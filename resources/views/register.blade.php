@@ -1,8 +1,5 @@
 {{-- COPY SITE https://beta.meetme.com/#home--}}
 
-{{--        {{dd($country[0]->country_name)}}--}}
-
-
 
 <!doctype html>
 <html lang="en">
@@ -11,7 +8,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{asset('/img/icon.png  ')}}">
+    <link rel="icon" href="{{asset('/img/icon2.png  ')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('/css/register/register.css')}}">
     <link rel="stylesheet" href="{{asset('/css/register/register-response.css')}}">

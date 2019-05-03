@@ -141,15 +141,16 @@ a{
     background-attachment: fixed;
 }
 .box {
-    width: 350px;
-    height: 200px;
+    width: 259px;
+    height: 134px;
     right: 15px;
     bottom: 15px;
     position: absolute;
     border-radius: 5px;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 6px;
+    padding: 7px;
+    padding-bottom: 11px;
     padding-top: 22px;
     text-align: center;
     box-sizing: border-box;
@@ -158,12 +159,12 @@ a{
     transition: box-shadow .3s ease;
 }
 .box:active {
-    cursor: move;
+    /*cursor: move;*/
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
 }
 
 .box .alisa-box-bg {
-    background: #0000007a;
+    background: #2524238f;
     z-index: 2;
     width: 100%;
     height: auto;
@@ -175,8 +176,11 @@ a{
 .box .alisa-box-content{
     position: absolute;
     z-index: 3;
-    width: calc(100% - 28px);
-    height: calc(100% - 28px);
+    width: calc(100% - 15px);
+    height: calc(100% - 34px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box .alisa-box-content h1{
@@ -229,9 +233,114 @@ a{
     margin: auto!important;
 }
 
+.beeg_box:active{
+    cursor: unset!important;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+}
+
+
+
+.coordinates{
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 8px;
+    align-items: center;
+    font-size: 7px;
+    height: 11px;
+    color: white;
+    width: 50px;
+    justify-content: space-between;
+}
+
+
 
 /*********ALISA DRAGGABLE STYLES END******************/
 
 
 
+/*ALISA MOdel STYLE*/
 
+.animation-wrapper {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sphere-animation {
+    width: 67px;
+    height: 67px;
+    margin: auto;
+    transform: scale(0.7)!important;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.7);
+}
+
+.sphere path {
+    fill: url(#sphereGradient);
+    stroke-width: 10px;
+    stroke: rgba(80,80,80,.35);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+@media (min-width: 500px) {
+    .sphere path {
+        stroke-width: 3px;
+    }
+}
+
+
+/*VOICE WAVE*/
+
+.voice_wave_left {
+    position: absolute;
+    left: 8px;
+}
+
+.voice_wave_right {
+    position: absolute;
+    right: 8px;
+    transform: rotate(180deg);
+}
+
+
+.voice_wave_left span ,.voice_wave_right  span{
+    display: block;
+    bottom: 0px;
+    width: 9px;
+    height: 2px;
+    background: #9b59b6;
+    position: absolute;
+    animation: audio-wave 1.5s infinite ease-in-out;
+}
+
+.voice_wave_left span:nth-child(2) ,.voice_wave_right span:nth-child(2) {
+    left: 11px;
+    animation-delay: 0.2s;
+}
+
+.voice_wave_left span:nth-child(3) ,.voice_wave_right span:nth-child(3) {
+    left: 22px;
+    animation-delay: 0.4s;
+}
+
+.voice_wave_left span:nth-child(4) ,.voice_wave_right span:nth-child(4) {
+    left: 33px;
+    animation-delay: 0.6s;
+}
+
+.voice_wave_left span:nth-child(5) ,.voice_wave_right span:nth-child(5) {
+    left: 44px;
+    animation-delay: 0.8s;
+}
+.voice_wave_left span:nth-child(6) ,.voice_wave_right span:nth-child(6) {
+    left: 55px;
+    animation-delay: 1s;
+}
+.voice_wave_left span:nth-child(7) ,.voice_wave_right span:nth-child(7) {
+    left: 66px;
+    animation-delay: 1.2s;
+}

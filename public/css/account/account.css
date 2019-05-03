@@ -26,6 +26,25 @@ input:focus,input:active{
 /* Handle on hover */
 .sect-1-leftmenu::-webkit-scrollbar-thumb:hover {
 }
+
+
+
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #292f40;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #3a4259;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #828ba4;
+}
 .wrapper{
     width: 100%;
     min-height: 100vh;

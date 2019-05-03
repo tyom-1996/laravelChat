@@ -1,24 +1,27 @@
 <!doctype html>
-<html lang="`en`">
+<html >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('/css/account/account.css')}}">
-
-    {{--ALISA START--}}
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('/js/alisa-2.1/css/alisa.css')}}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="{{asset('/js/alisa-2.1/alisa-actions.js')}} " ></script>
-    <script src="{{asset('/js/alisa-2.1/diff.js')}} " ></script>
-    <script src="{{asset('/js/alisa-2.1/alisa.js')}}"></script>
-    <script src="{{asset('/js/alisa-2.1/voice-assistant.js')}} " ></script>
-    {{--ALISA END--}}
-
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link rel="icon" href="{{asset('/img/icon2.png  ')}}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="{{asset('/css/account/account.css')}}">
+{{--ALISA START--}}
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('/js/alisa-2.1/css/alisa.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="{{asset('/js/alisa-2.1/diff.js')}}"></script>
+<script src="{{asset('/js/alisa-2.1/alisa.js')}}"></script>
+<script src="{{asset('/js/alisa-2.1/voice-assistant.js')}}"></script>
+<script src="{{asset('/js/alisa-2.1/alisa-model/alisa-model.js')}}"></script>
+<script src="{{asset('/js/alisa-2.1/alisa-actions.js')}}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="{{asset('/js/alisa-2.1/alisa-model/css/alisa-model-animation.css')}}">
+{{--ALISA END--}}
+<title>Document</title>
 </head>
 <body>
 {{--<a href="/logout">Logout</a>--}}
@@ -105,6 +108,9 @@
 
 
 </div>
+
+
+
 
 
 
