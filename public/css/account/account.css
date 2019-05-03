@@ -217,10 +217,15 @@ input:focus,input:active{
     justify-content: space-between;
 }
 
+.inp_bl_2{
+    position: relative;
+    margin: auto;
+    width: 83%;
+}
 
 .inp_bl_2 input{
     display: block;
-    width: 85%;
+    width: 100%;
     max-width: 291px;
     padding: 10px 20px;
     border-radius: 23px;
@@ -229,11 +234,18 @@ input:focus,input:active{
     box-sizing: border-box;
     color: #999dab;
     font-size: 12px;
-    margin-left: 32px;
 }
 
 .inp_bl_2 input::placeholder{
     color: #999dab ;
+}
+
+.inp_bl_2 i{
+    position: absolute;
+    top: 13px;
+    right: 21px;
+    font-size: 13px;
+    color: #999dab;
 }
 
 .sect-2-left-content{

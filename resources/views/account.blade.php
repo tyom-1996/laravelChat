@@ -106,6 +106,7 @@
             <div class="sect-2-right-header">
                 <div class="inp_bl_2">
                     <input type="text" placeholder="Search">
+                    <i class="fas fa-search"></i>
                 </div>
             </div>
         </div>
