@@ -84,9 +84,10 @@
 
             <div class="sect-1-rightmenu-footer">
                     <div class="sect-1-rightmenu-footer-left">
-                        <div>
-                            <img src="" alt="">
+                        <div class="my_photo_bl" >
+                            <img src="{{asset('/img/default_user.jpg')}}" alt="">
                         </div>
+                        <p>User</p>
                     </div>
 
                     <div class="sect-1-rightmenu-footer-right">

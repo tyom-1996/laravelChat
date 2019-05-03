@@ -27,9 +27,6 @@ input:focus,input:active{
 .sect-1-leftmenu::-webkit-scrollbar-thumb:hover {
 }
 
-
-
-
 ::-webkit-scrollbar {
     width: 4px;
 }
@@ -193,8 +190,11 @@ input:focus,input:active{
 }
 
 .sect-1-rightmenu-footer-left{
-    width: 50%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32%;
 }
 
 .sect-1-rightmenu-footer-right{
@@ -202,7 +202,16 @@ input:focus,input:active{
     height: 100%;
 }
 
+.my_photo_bl{
+    width: 53px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 50%;
+}
 
+.my_photo_bl img{
+    width: 53px;
+}
 
 /*SECTION 2*/
 
