@@ -1,3 +1,5 @@
+{{--https://cdn.dribbble.com/users/1858541/screenshots/4800529/attachments/1079458/chat_ui_shot_2x.png--}}
+
 <!doctype html>
 <html >
 <head>
@@ -24,7 +26,6 @@
 <title>Document</title>
 </head>
 <body>
-{{--<a href="/logout">Logout</a>--}}
 <div class="wrapper">
     <section class="section-1">
         <div class="sect-1-header">
@@ -102,7 +103,11 @@
         </div>
 
         <div class="sect-2-right">
-            <div class="sect-2-right-header"></div>
+            <div class="sect-2-right-header">
+                <div class="inp_bl_2">
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
         </div>
     </section>
 

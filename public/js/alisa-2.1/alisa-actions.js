@@ -48,22 +48,6 @@ $(document).ready(function(){
 
     //ALISA VOICE WAVE
 
-    setTimeout(function(){
-        $('body').append(`
-        <style class="voice_wave_active" >
-            @keyframes audio-wave {
-                0% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                25% {height:40px;transform:translateY(20px);background:#3498db;}
-                /*effect is to animate the height of each span from 5px to 30px*/
-                /*translateY makes Y axis move down to give the effect that it is growing from the center*/
-            
-                50% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                100% {height:5px;transform:translateY(0px);background:#9b59b6;}
-            }
-        </style>   
-    `)
-
-    },3600)
 
 
 

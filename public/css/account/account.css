@@ -89,6 +89,7 @@ input:focus,input:active{
     border: 2px solid #3b4258;
     box-sizing: border-box;
     color: #999dab;
+    font-size: 12px;
 }
 
 .inp_bl input::placeholder{
@@ -102,7 +103,7 @@ input:focus,input:active{
 
 .sect-1-leftmenu{
     width: 18%;
-    height: calc(100% - 102px) ;
+    height: calc(100% - 100px) ;
     background: #292f40;
     overflow: auto;
     display: flex;
@@ -173,7 +174,7 @@ input:focus,input:active{
 
 .sect-1-rightmenu{
     width: 82%;
-    height: calc(100% - 102px);
+    height: calc(100% - 100px);
     background: #32394d;
 }
 
@@ -217,6 +218,23 @@ input:focus,input:active{
 }
 
 
+.inp_bl_2 input{
+    display: block;
+    width: 85%;
+    max-width: 291px;
+    padding: 10px 20px;
+    border-radius: 23px;
+    background: #292f40;
+    border: 2px solid #3b4258;
+    box-sizing: border-box;
+    color: #999dab;
+    font-size: 12px;
+    margin-left: 32px;
+}
+
+.inp_bl_2 input::placeholder{
+    color: #999dab ;
+}
 
 .sect-2-left-content{
     width: 100%;
