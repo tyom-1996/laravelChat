@@ -44,7 +44,8 @@ input:focus,input:active{
 }
 .wrapper{
     width: 100%;
-    min-height: 100vh;
+    min-height: 600px;
+    height: 100vh;
     background: silver;
     display: flex ;
     flex-wrap: wrap;
@@ -53,7 +54,7 @@ input:focus,input:active{
 /*SECTION 1*/
 
 .section-1{
-    width:25%;
+    width:26%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -113,7 +114,7 @@ input:focus,input:active{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 58%;
+    height: 51%;
     max-height: 307px;
     box-sizing: border-box;
     padding-top: 12px;
@@ -124,8 +125,8 @@ input:focus,input:active{
 
 
 .leftmenu-item{
-    width: 50px;
-    height: 50px;
+    width:38px;
+    height:38px;
     border-radius: 50%;
     background: #32394d;
     margin: 8% auto;
@@ -145,8 +146,8 @@ input:focus,input:active{
 }
 
 .leftmenu-item-logout{
-    width: 50px;
-    height: 50px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: #32394d;
     margin: 8% auto;
@@ -164,7 +165,7 @@ input:focus,input:active{
 
 .leftmenu-item i,.logout-bl i{
     color: white;
-    font-size: 17px;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -216,7 +217,7 @@ input:focus,input:active{
 /*SECTION 2*/
 
 .section-2{
-    width:75%;
+    width:74%;
     display: flex;
     flex-wrap:wrap;
 }

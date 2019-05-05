@@ -1,3 +1,5 @@
+var JsDiff=function(){function v(e){return{newPos:e.newPos,components:e.components.slice(0)}}function n(e){for(var n=[],t=0;t<e.length;t++)e[t]&&n.push(e[t]);return n}var e=function(e){this.ignoreWhitespace=e};e.prototype={diff:function(e,n){if(n===e)return[{value:n}];if(!n)return[{value:e,removed:!0}];if(!e)return[{value:n,added:!0}];n=this.tokenize(n),e=this.tokenize(e);var t=n.length,o=e.length,r=t+o,i=[{newPos:-1,components:[]}],s=this.extractCommon(i[0],n,e,0);if(i[0].newPos+1>=t&&o<=s+1)return i[0].components;for(var u=1;u<=r;u++)for(var l=-1*u;l<=u;l+=2){var d,a=i[l-1],f=i[l+1];s=(f?f.newPos:0)-l,a&&(i[l-1]=void 0);var p=a&&a.newPos+1<t,h=f&&0<=s&&s<o;if(p||h){!p||h&&a.newPos<f.newPos?(d=v(f),this.pushComponent(d.components,e[s],void 0,!0)):((d=v(a)).newPos++,this.pushComponent(d.components,n[d.newPos],!0,void 0));s=this.extractCommon(d,n,e,l);if(d.newPos+1>=t&&o<=s+1)return d.components;i[l]=d}else i[l]=void 0}},pushComponent:function(e,n,t,o){var r=e[e.length-1];r&&r.added===t&&r.removed===o?e[e.length-1]={value:this.join(r.value,n),added:t,removed:o}:e.push({value:n,added:t,removed:o})},extractCommon:function(e,n,t,o){for(var r=n.length,i=t.length,s=e.newPos,u=s-o;s+1<r&&u+1<i&&this.equals(n[s+1],t[u+1]);)s++,u++,this.pushComponent(e.components,n[s],void 0,void 0);return e.newPos=s,u},equals:function(e,n){var t=/\S/;return!(!this.ignoreWhitespace||t.test(e)||t.test(n))||e===n},join:function(e,n){return e+n},tokenize:function(e){return e}};var t=new e,o=new e(!0),r=new e;o.tokenize=r.tokenize=function(e){return n(e.split(/(\s+|\b)/))};var i=new e(!0);i.tokenize=function(e){return n(e.split(/([{}:;,]|\s+)/))};var P=new e;return P.tokenize=function(e){return e.split(/^/m)},{Diff:e,diffChars:function(e,n){return t.diff(e,n)},diffWords:function(e,n){return o.diff(e,n)},diffWordsWithSpace:function(e,n){return r.diff(e,n)},diffLines:function(e,n){return P.diff(e,n)},diffCss:function(e,n){return i.diff(e,n)},createPatch:function(e,n,t,o,r){var i=[];i.push("Index: "+e),i.push("==================================================================="),i.push("--- "+e+(void 0===o?"":"\t"+o)),i.push("+++ "+e+(void 0===r?"":"\t"+r));var s=P.diff(n,t);function u(e){return e.map(function(e){return" "+e})}function l(e,n,t){var o=s[s.length-2],r=n===s.length-2,i=n===s.length-3&&(t.added!==o.added||t.removed!==o.removed);/\n$/.test(t.value)||!r&&!i||e.push("\\ No newline at end of file")}s[s.length-1].value||s.pop(),s.push({value:"",lines:[]});for(var d=0,a=0,f=[],p=1,h=1,v=0;v<s.length;v++){var c=s[v],g=c.lines||c.value.replace(/\n$/,"").split("\n");if(c.lines=g,c.added||c.removed){if(!d){var m=s[v-1];d=p,a=h,m&&(d-=(f=u(m.lines.slice(-4))).length,a-=f.length)}f.push.apply(f,g.map(function(e){return(c.added?"+":"-")+e})),l(f,v,c),c.added?h+=g.length:p+=g.length}else{if(d)if(g.length<=8&&v<s.length-2)f.push.apply(f,u(g));else{var w=Math.min(g.length,4);i.push("@@ -"+d+","+(p-d+w)+" +"+a+","+(h-a+w)+" @@"),i.push.apply(i,f),i.push.apply(i,u(g.slice(0,w))),g.length<=4&&l(i,v,c),a=d=0,f=[]}p+=g.length,h+=g.length}}return i.join("\n")+"\n"},applyPatch:function(e,n){for(var t=n.split("\n"),o=[],r=!1,i=!1,s="I"===t[0][0]?4:0;s<t.length;s++)if("@"===t[s][0]){var u=t[s].split(/@@ -(\d+),(\d+) \+(\d+),(\d+) @@/);o.unshift({start:u[3],oldlength:u[2],oldlines:[],newlength:u[4],newlines:[]})}else"+"===t[s][0]?o[0].newlines.push(t[s].substr(1)):"-"===t[s][0]?o[0].oldlines.push(t[s].substr(1)):" "===t[s][0]?(o[0].newlines.push(t[s].substr(1)),o[0].oldlines.push(t[s].substr(1))):"\\"===t[s][0]&&("+"===t[s-1][0]?r=!0:"-"===t[s-1][0]&&(i=!0));var l=e.split("\n");for(s=o.length-1;0<=s;s--){for(var d=o[s],a=0;a<d.oldlength;a++)if(l[d.start-1+a]!==d.oldlines[a])return!1;Array.prototype.splice.apply(l,[d.start-1,+d.oldlength].concat(d.newlines))}if(r)for(;!l[l.length-1];)l.pop();else i&&l.push("");return l.join("\n")},convertChangesToXML:function(e){for(var n,t=[],o=0;o<e.length;o++){var r=e[o];r.added?t.push("<ins>"):r.removed&&t.push("<del>"),t.push((n=r.value,void 0,n.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"))),r.added?t.push("</ins>"):r.removed&&t.push("</del>")}return t.join("")},convertChangesToDMP:function(e){for(var n,t=[],o=0;o<e.length;o++)n=e[o],t.push([n.added?1:n.removed?-1:0,n.value]);return t}}}();"undefined"!=typeof module&&(module.exports=JsDiff);
+
 Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     get: function() {
         return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
@@ -7,8 +9,6 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 class Alisa {
 
     constructor(){
-
-
 
         this.audio;
         this.speak;
@@ -75,64 +75,37 @@ class Alisa {
                         <h4 class="boxY"></h4>
                     </div>
                     <div class="alisa-box-content">
-                       
-                        <div class="voice_wave_left"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
-                        <div class="voice_wave_right"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
-
-                        <div class="animation-wrapper">
-                            <div class="sphere-animation">
-                                <svg class="sphere" viewBox="0 0 440 440" stroke="rgba(80,80,80,.35)">
-                                    <defs>
-                                        <linearGradient id="sphereGradient" x1="5%" x2="5%" y1="0%" y2="15%">
-                                            <stop stop-color="#373734" offset="0%"/>
-                                            <stop stop-color="#242423" offset="50%"/>
-                                            <stop stop-color="#0D0D0C" offset="100%"/>
-                                        </linearGradient>
-                                    </defs>
-                                    <path d="M361.604 361.238c-24.407 24.408-51.119 37.27-59.662 28.727-8.542-8.543 4.319-35.255 28.726-59.663 24.408-24.407 51.12-37.269 59.663-28.726 8.542 8.543-4.319 35.255-28.727 59.662z"/>
-                                    <path d="M360.72 360.354c-35.879 35.88-75.254 54.677-87.946 41.985-12.692-12.692 6.105-52.067 41.985-87.947 35.879-35.879 75.254-54.676 87.946-41.984 12.692 12.692-6.105 52.067-41.984 87.946z"/>
-                                    <path d="M357.185 356.819c-44.91 44.91-94.376 68.258-110.485 52.149-16.11-16.11 7.238-65.575 52.149-110.485 44.91-44.91 94.376-68.259 110.485-52.15 16.11 16.11-7.239 65.576-52.149 110.486z"/>
-                                    <path d="M350.998 350.632c-53.21 53.209-111.579 81.107-130.373 62.313-18.794-18.793 9.105-77.163 62.314-130.372 53.209-53.21 111.579-81.108 130.373-62.314 18.794 18.794-9.105 77.164-62.314 130.373z"/>
-                                    <path d="M343.043 342.677c-59.8 59.799-125.292 91.26-146.283 70.268-20.99-20.99 10.47-86.483 70.269-146.282 59.799-59.8 125.292-91.26 146.283-70.269 20.99 20.99-10.47 86.484-70.27 146.283z"/>
-                                    <path d="M334.646 334.28c-65.169 65.169-136.697 99.3-159.762 76.235-23.065-23.066 11.066-94.593 76.235-159.762s136.697-99.3 159.762-76.235c23.065 23.065-11.066 94.593-76.235 159.762z"/>
-                                    <path d="M324.923 324.557c-69.806 69.806-146.38 106.411-171.031 81.76-24.652-24.652 11.953-101.226 81.759-171.032 69.806-69.806 146.38-106.411 171.031-81.76 24.652 24.653-11.953 101.226-81.759 171.032z"/>
-                                    <path d="M312.99 312.625c-73.222 73.223-153.555 111.609-179.428 85.736-25.872-25.872 12.514-106.205 85.737-179.428s153.556-111.609 179.429-85.737c25.872 25.873-12.514 106.205-85.737 179.429z"/>
-                                    <path d="M300.175 299.808c-75.909 75.909-159.11 115.778-185.837 89.052-26.726-26.727 13.143-109.929 89.051-185.837 75.908-75.908 159.11-115.778 185.837-89.051 26.726 26.726-13.143 109.928-89.051 185.836z"/>
-                                    <path d="M284.707 284.34c-77.617 77.617-162.303 118.773-189.152 91.924-26.848-26.848 14.308-111.534 91.924-189.15C265.096 109.496 349.782 68.34 376.63 95.188c26.849 26.849-14.307 111.535-91.923 189.151z"/>
-                                    <path d="M269.239 267.989c-78.105 78.104-163.187 119.656-190.035 92.807-26.849-26.848 14.703-111.93 92.807-190.035 78.105-78.104 163.187-119.656 190.035-92.807 26.849 26.848-14.703 111.93-92.807 190.035z"/>
-                                    <path d="M252.887 252.52C175.27 330.138 90.584 371.294 63.736 344.446 36.887 317.596 78.043 232.91 155.66 155.293 233.276 77.677 317.962 36.521 344.81 63.37c26.85 26.848-14.307 111.534-91.923 189.15z"/>
-                                    <path d="M236.977 236.61C161.069 312.52 77.867 352.389 51.14 325.663c-26.726-26.727 13.143-109.928 89.052-185.837 75.908-75.908 159.11-115.777 185.836-89.05 26.727 26.726-13.143 109.928-89.051 185.836z"/>
-                                    <path d="M221.067 220.7C147.844 293.925 67.51 332.31 41.639 306.439c-25.873-25.873 12.513-106.206 85.736-179.429C200.6 53.786 280.931 15.4 306.804 41.272c25.872 25.873-12.514 106.206-85.737 179.429z"/>
-                                    <path d="M205.157 204.79c-69.806 69.807-146.38 106.412-171.031 81.76-24.652-24.652 11.953-101.225 81.759-171.031 69.806-69.807 146.38-106.411 171.031-81.76 24.652 24.652-11.953 101.226-81.759 171.032z"/>
-                                    <path d="M189.247 188.881c-65.169 65.169-136.696 99.3-159.762 76.235-23.065-23.065 11.066-94.593 76.235-159.762s136.697-99.3 159.762-76.235c23.065 23.065-11.066 94.593-76.235 159.762z"/>
-                                    <path d="M173.337 172.971c-59.799 59.8-125.292 91.26-146.282 70.269-20.991-20.99 10.47-86.484 70.268-146.283 59.8-59.799 125.292-91.26 146.283-70.269 20.99 20.991-10.47 86.484-70.269 146.283z"/>
-                                    <path d="M157.427 157.061c-53.209 53.21-111.578 81.108-130.372 62.314-18.794-18.794 9.104-77.164 62.313-130.373 53.21-53.209 111.58-81.108 130.373-62.314 18.794 18.794-9.105 77.164-62.314 130.373z"/>
-                                    <path d="M141.517 141.151c-44.91 44.91-94.376 68.259-110.485 52.15-16.11-16.11 7.239-65.576 52.15-110.486 44.91-44.91 94.375-68.258 110.485-52.15 16.109 16.11-7.24 65.576-52.15 110.486z"/>
-                                    <path d="M125.608 125.241c-35.88 35.88-75.255 54.677-87.947 41.985-12.692-12.692 6.105-52.067 41.985-87.947C115.525 43.4 154.9 24.603 167.592 37.295c12.692 12.692-6.105 52.067-41.984 87.946z"/>
-                                    <path d="M109.698 109.332c-24.408 24.407-51.12 37.268-59.663 28.726-8.542-8.543 4.319-35.255 28.727-59.662 24.407-24.408 51.12-37.27 59.662-28.727 8.543 8.543-4.319 35.255-28.726 59.663z"/>
-                                </svg>
-                            </div>
-                        </div>
-
+                    <div class="alisa_text_bl" ></div>
+                        <img class="alisa_img" src="http://smartimes.ru/wp-content/uploads/2014/09/assistant.png" >
+                        <div id="voice_wave_left" class="voice_wave_left"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
+                        <div id="voice_wave_right" class="voice_wave_right"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
+                           <div class="microfon_icon_bl" >
+                                <i id="microfon_icon" class="fas fa-microphone-alt"></i>
+                           </div>
                     </div>
                 </div>
             `)
 
 
-            setTimeout(function(){
-                $('body').append(`
-                    <style class="voice_wave_active" >
-                        @keyframes audio-wave {
-                            0% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                            25% {height:40px;transform:translateY(20px);background:#3498db;}
-                            50% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                            100% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                        }
-                    </style>   
-                `)
-
-            },3600)
-
+            if (JSON.parse(localStorage.getItem(('switch'))) == false){
+                    $('body').append(`
+                        <style class="voice_wave_active_bl" >
+                            @keyframes audio-wave {
+                                0% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                                25% {height:40px;transform:translateY(20px);background:#3498db;}
+                                50% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                                100% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                            }
+                        </style>   
+                     `)
+            }else{
+                $('.alisa-box-content').css({
+                    'opacity':'0.1'
+                })
+                $('.microfon_icon_bl').html(`<i class="fas fa-microphone-alt-slash"></i>`)
+                $('.voice_wave_left').fadeOut()
+                $('.voice_wave_right').fadeOut()
+            }
 
             var offset = $('.box').offset();
             var xPos = offset.left;
@@ -190,6 +163,28 @@ class Alisa {
                 console.log(toggleOnData[i].answer);
                 localStorage.setItem('switch', false)
                 this.switch = JSON.parse(localStorage.getItem(('switch')));
+
+                if (!$('style').is('.voice_wave_active_bl')) {
+                    $('body').append(`
+                        <style class="voice_wave_active_bl" >
+                            @keyframes audio-wave {
+                                0% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                                25% {height:40px;transform:translateY(20px);background:#3498db;}
+                                50% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                                100% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                            }
+                        </style>   
+                    `)
+                }
+                $('.microfon_icon_bl').html(`<i class="fas fa-microphone-alt"></i>`)
+                $('.voice_wave_left').fadeIn()
+                $('.voice_wave_right').fadeIn()
+
+                $('.alisa-box-content').css({
+                    'opacity':'1'
+                })
+
+
             }
         }
     }
@@ -202,6 +197,16 @@ class Alisa {
                 console.log(toggleOffData[i].answer);
                 localStorage.setItem('switch', true)
                 this.switch = localStorage.getItem(('switch'));
+
+                $('.voice_wave_active_bl').remove()
+                $('#sphere').removeClass('sphere-animation')
+                $('.alisa-box-content').css({
+                    'opacity':'0.1'
+                })
+
+                $('.microfon_icon_bl').html(`<i class="fas fa-microphone-alt-slash"></i>`)
+                $('.voice_wave_left').fadeOut()
+                $('.voice_wave_right').fadeOut()
             }
         }
     }
@@ -244,7 +249,7 @@ class Alisa {
             }
 
             if (this.switch === false) {
-                document.getElementById('result').innerHTML = this.finalTranscript.toLocaleLowerCase() + '<hr><i style="color:#ddd;">' + this.interimTranscript + '</>';
+                // document.getElementById('result').innerHTML = this.finalTranscript.toLocaleLowerCase() + '<hr><i style="color:#ddd;">' + this.interimTranscript + '</>';
                 console.log(this.interimTranscript)
             }
         }
@@ -394,18 +399,46 @@ class Alisa {
                 }
             }
         }
-        comands['гидеон самоуничтажение||взарви все к черту||взрыв'] = () => {
-            this.say('Смерть лиш начало, грязный ты падлец. Увидемся на том свете')
+        comands['выйди из сайта'] = () => {
+           location.href = '/logout'
         }
         comands['открой свои настройки||открой настройки||настройки'] = () => {
 
-            let alisaState = !this.switch  ? 'Alisa Onn' : 'Alisa Off';
+            if (!$('#box1').hasClass('beeg_box')){
+                // let alisaState = !this.switch  ? 'Alisa Onn' : 'Alisa Off';
+                $('#box1').addClass('beeg_box')
+                $('#box1').removeAttr("style")
+                $('.voice_wave_left,.voice_wave_right').hide()
+                $('.coordinates').hide()
+                $('.alisa_img').hide()
 
-            if (!$('div').is('.setting-bl')) {
-                this.alisaActionsBlock()
+                $('#box1').append(`
+                <div id="box2" class="box " style="width: 259px;right: 15px;height: 102px;bottom: 15px;top: unset;box-shadow: 0 0 transparent;">
+                <div class="alisa-box-bg" style="background: transparent;"></div>
+                <div class="alisa-box-content">
+                <div class="voice_wave_left" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
+                <div class="voice_wave_right" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
+              </div></div>
+             `)
+
+                this.say('настройки открыты')
+
             }
 
-            this.say('дорогой мой,что именно тебе во мне не устраивает')
+
+        }
+
+        comands['закрой свои настройки||закрой настройки||закрой'] = () => {
+
+            if ($('#box1').hasClass('beeg_box')){
+                $('#box1').removeClass('beeg_box')
+                $('.voice_wave_left,.voice_wave_right,.animation-wrapper').show()
+                $('#box2').remove()
+                $('.coordinates').show()
+                $('.alisa_img').show()
+
+                this.say('настройки закрыты')
+            }
 
         }
 

@@ -13,16 +13,20 @@
 {{--ALISA START--}}
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 <link rel="stylesheet" href="{{asset('/js/alisa-2.1/css/alisa.css')}}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script src="{{asset('/js/alisa-2.1/diff.js')}}"></script>
-<script src="{{asset('/js/alisa-2.1/alisa.js')}}"></script>
-<script src="{{asset('/js/alisa-2.1/voice-assistant.js')}}"></script>
-<script src="{{asset('/js/alisa-2.1/alisa-model/alisa-model.js')}}"></script>
-<script src="{{asset('/js/alisa-2.1/alisa-actions.js')}}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="{{asset('/js/alisa-2.1/alisa-model/css/alisa-model-animation.css')}}">
-{{--ALISA END--}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="{{asset('/js/alisa-2.1/js/alisa.js')}}"></script>
+<script src="{{asset('/js/alisa-2.1/alisa-model/alisa-model.js')}}"></script>
+    <script src="{{asset('/js/alisa-2.1/js/voice-assistant.js')}}"></script>
+
+    <script class="alisa_action" src="{{asset('/js/alisa-2.1/js/alisa-actions.js')}}"></script>
+
+
+
+    {{--ALISA END--}}
 <title>Document</title>
 </head>
 <body>
@@ -84,10 +88,10 @@
 
             <div class="sect-1-rightmenu-footer">
                     <div class="sect-1-rightmenu-footer-left">
-                        <div class="my_photo_bl" >
-                            <img src="{{asset('/img/default_user.jpg')}}" alt="">
-                        </div>
-                        <p>User</p>
+{{--                        <div class="my_photo_bl" >--}}
+{{--                            <img src="{{asset('/img/default_user.jpg')}}" alt="">--}}
+{{--                        </div>--}}
+{{--                        <p>User</p>--}}
                     </div>
 
                     <div class="sect-1-rightmenu-footer-right">
@@ -116,18 +120,12 @@
         </div>
 
         <div class="sect-2-right">
-            <div class="sect-2-right-header">
-                <div class="inp_bl_2">
-                    <input type="text" placeholder="Search">
-                    <i class="fas fa-search"></i>
-                </div>
-            </div>
+
         </div>
     </section>
 
 
 </div>
-
 
 
 
