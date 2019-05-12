@@ -61,7 +61,7 @@ input:focus,input:active{
 
 .sect-1-header{
     width: 100%;
-    height: 100px;
+    height: 70px;
     border-bottom: 2px solid #292f40;
     background: #32394d;
 
@@ -95,13 +95,13 @@ input:focus,input:active{
 }
 
 .logo_bl img{
-    width: 50px;
+    width: 42px;
     margin-left: 14px;
 }
 
 .sect-1-leftmenu{
     width: 18%;
-    height: calc(100% - 100px) ;
+    height: calc(100% - 70px) ;
     background: #292f40;
     overflow: auto;
     display: flex;
@@ -172,18 +172,18 @@ input:focus,input:active{
 
 .sect-1-rightmenu{
     width: 82%;
-    height: calc(100% - 100px);
+    height: calc(100% - 70px);
     background: #32394d;
 }
 
 .sect-1-rightmenu-content{
     width: 100%;
-    height: calc(100% - 72px);
+    height: calc(100% - 60px);
 }
 
 .sect-1-rightmenu-footer{
     width: 100%;
-    height: 70px;
+    height: 60px;
     background: #2f3547;
     display: flex;
     justify-content: space-between;
@@ -234,7 +234,7 @@ input:focus,input:active{
 
 .sect-2-left-header{
     width: 100%;
-    height: 100px;
+    height: 70px;
     border-bottom: 2px solid #292f40;
     background: #32394d70;
     display: flex;
@@ -284,12 +284,12 @@ input:focus,input:active{
 
 .sect-2-left-content{
     width: 100%;
-    height: calc(100% - 172px);
+    height: calc(100% - 130px);
 }
 
 .message-inp-bl{
     width: 100%;
-    height: 70px;
+    height: 60px;
 }
 
 

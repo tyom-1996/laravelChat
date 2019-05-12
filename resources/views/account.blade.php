@@ -24,10 +24,9 @@
 
     <script class="alisa_action" src="{{asset('/js/alisa-2.1/js/alisa-actions.js')}}"></script>
 
-
-
     {{--ALISA END--}}
 <title>Document</title>
+
 </head>
 <body>
 <div class="wrapper">
