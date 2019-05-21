@@ -9,7 +9,6 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 class Alisa {
 
     constructor(){
-
         this.audio;
         this.speak;
         this.finalTranscript = '';
@@ -20,9 +19,7 @@ class Alisa {
             localStorage.setItem('switch', true)
         }
         this.switch = JSON.parse(localStorage.getItem(('switch')));
-
     }
-
 
 
     say(text)
@@ -44,7 +41,9 @@ class Alisa {
     {
         console.log('micrafon off')
         this.recognition.stop()
-        this.speak = new Audio('https://code.responsivevoice.org/getvoice.php?t=' + text + '&tl=ru&sv=g1&vn=&pitch=0.5&rate=0.5&vol=1&gender=female');
+        this.speak = new Audio(
+            `https://code.responsivevoice.org/getvoice.php?t=${text}&tl=ru&sv=g1&vn=&pitch=0.5&rate=0.5&vol=1&gender=female`
+        );
         this.speak.id = 'id'
         this.speak.play()
     }
@@ -60,7 +59,6 @@ class Alisa {
 
     alisaActionsBlock(){
         $(document).ready(function(){
-
             $('body').append(`
                 <div id="box1" class="box blurred-bg tinted">
                     <div class="alisa-box-actions">
@@ -68,16 +66,19 @@ class Alisa {
                          <div id="expand" class="alisa-box-actions-item alisa-box-actions-expand"><i class="far fa-window-restore"></i></div>  <!--развернуть -->
                          <div id="close" class="alisa-box-actions-item alisa-box-actions-close"><i class="fas fa-times"></i></div> <!--закрыть-->
                     </div>
-                    
                     <div class="alisa-box-bg"></div>
                     <div class="coordinates">
                         <h4 class="boxX"></h4>
                         <h4 class="boxY"></h4>
                     </div>
                     <div class="alisa-box-content">
+<<<<<<< HEAD
                         <div class="alisa_text_bl" >
                             <textarea class="alisa_text_bl_textarea" ></textarea>
                         </div>
+=======
+                    <div id="alisa_text_bl" class="alisa_text_bl" ></div>
+>>>>>>> 87a164cba101841674a6e7b1430d7b66c9a34de5
                         <img class="alisa_img" src="http://smartimes.ru/wp-content/uploads/2014/09/assistant.png" >
                         <div id="voice_wave_left" class="voice_wave_left"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
                         <div id="voice_wave_right" class="voice_wave_right"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
@@ -86,20 +87,20 @@ class Alisa {
                            </div>
                     </div>
                 </div>
-            `)
+            `);
 
 
             if (JSON.parse(localStorage.getItem(('switch'))) == false){
-                    $('body').append(`
-                        <style class="voice_wave_active_bl" >
-                            @keyframes audio-wave {
-                                0% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                                25% {height:40px;transform:translateY(20px);background:#3498db;}
-                                50% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                                100% {height:5px;transform:translateY(0px);background:#9b59b6;}
-                            }
-                        </style>   
-                     `)
+                $('body').append(`
+                    <style class="voice_wave_active_bl" >
+                        @keyframes audio-wave {
+                            0% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                            25% {height:40px;transform:translateY(20px);background:#3498db;}
+                            50% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                            100% {height:5px;transform:translateY(0px);background:#9b59b6;}
+                        }
+                    </style>   
+                 `);
             }else{
                 $('.alisa-box-content').css({
                     'opacity':'0.1'
@@ -120,21 +121,19 @@ class Alisa {
 
     start()
     {
-
         this.alisaActionsBlock();
-
         window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
         this.recognition = new window.SpeechRecognition();
         this.recognition.lang = 'ru-RU';
         this.recognition.maxAlternatives = 1;
         this.recognition.interimResults = true;
         this.recognition.start()
+
         console.log(this.recognition)
 
         this.recognition.onend = () => {
 
             if (screen.width > 600) {
-
                 this.interval = setInterval(() => {
                     if (this.speak) {
                         if (this.speak.playing) {
@@ -150,8 +149,8 @@ class Alisa {
                         clearInterval(this.interval)
                     }
                 }, 100);
-
             }
+
         };
     }
 
@@ -237,12 +236,14 @@ class Alisa {
 
                     if (this.switch == false) {
                         this.command_execution(comands, this.my_comand);
+
                     }
 
                     this.toggleOn(this.my_comand, this.toggleOnData);
                     this.toggleOff(this.my_comand, this.toggleOffData)
 
                 } else {
+                    $('#alisa_text_bl').empty()
 
                     this.interimTranscript += this.transcript;
 
@@ -251,7 +252,12 @@ class Alisa {
             }
 
             if (this.switch === false) {
-                // document.getElementById('result').innerHTML = this.finalTranscript.toLocaleLowerCase() + '<hr><i style="color:#ddd;">' + this.interimTranscript + '</>';
+
+
+                $('#alisa_text_bl').html(
+                    this.finalTranscript.toLocaleLowerCase() + '<hr><i style="color:#ddd;">' + this.interimTranscript + '</>'
+                )
+                // document.getElementById('alisa_text_bl').innerHTML = this.finalTranscript.toLocaleLowerCase() + '<hr><i style="color:#ddd;">' + this.interimTranscript + '</>';
                 console.log(this.interimTranscript)
             }
         }
