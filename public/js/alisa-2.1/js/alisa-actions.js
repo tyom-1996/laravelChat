@@ -17,16 +17,16 @@ $(document).ready(function() {
                 <div class="alisa-box-content">
                 <div class="voice_wave_left" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
                 <div class="voice_wave_right" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
+<!--                 <div class="microfon_icon_bl" ><i id="microfon_icon" class="fas fa-microphone-alt"></i></div>-->
                 </div></div>
-             `)
-
-                $('.coordinates').hide()
-                $('.alisa_img').hide()
+            `)
+            $('.coordinates').hide();
+            $('.alisa_img').hide();
         } else {
-            $('.coordinates').show()
-            $('.alisa_img').show()
+            $('.coordinates').show();
+            $('.alisa_img').show();
+            $('#box2').remove()
         }
-
 
     })
 
@@ -45,12 +45,13 @@ $(document).ready(function() {
                 var offset = $(this).offset();
                 var xPos = offset.left;
                 var yPos = offset.top;
-                let screen_width = screen.width - 350;
-                let screen_height = screen.height - 200;
+                var screen_width = screen.width - 350;
+                var screen_height = screen.height - 200;
 
                 if (xPos <= 0) {
                     $('.box').css('left', '')
                 }
+
                 if (xPos >= screen_width) {
                     $('.box').css('left', '').css('right', '')
                 }
@@ -58,10 +59,6 @@ $(document).ready(function() {
         });
     }
 
-
     //ALISA VOICE WAVE
-
-
-
 
 })

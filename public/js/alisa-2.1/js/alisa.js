@@ -75,7 +75,9 @@ class Alisa {
                         <h4 class="boxY"></h4>
                     </div>
                     <div class="alisa-box-content">
-                    <div class="alisa_text_bl" ></div>
+                        <div class="alisa_text_bl" >
+                            <textarea class="alisa_text_bl_textarea" ></textarea>
+                        </div>
                         <img class="alisa_img" src="http://smartimes.ru/wp-content/uploads/2014/09/assistant.png" >
                         <div id="voice_wave_left" class="voice_wave_left"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
                         <div id="voice_wave_right" class="voice_wave_right"><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span><span class="span" ></span></div>
