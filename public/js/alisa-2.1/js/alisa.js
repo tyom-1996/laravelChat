@@ -59,7 +59,7 @@ class Alisa {
             $('body').append(`
                 <div id="box1" class="box blurred-bg tinted">
                     <div class="phone-style">
-                    
+                        <div class="mobile-btn"></div>
                     </div>
                 
                     <div class="setting-bl">

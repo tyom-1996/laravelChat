@@ -489,3 +489,16 @@ a{
     border-radius: 50%;
     background: white;
 }
+
+.mobile-btn{
+    width: 32px;
+    height: 32px;
+    background: black;
+    position: absolute;
+    bottom: 7px;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-shadow: 0 0 4px #dddddd;
+}
