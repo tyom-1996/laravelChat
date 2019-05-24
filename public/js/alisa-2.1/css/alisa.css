@@ -1,7 +1,24 @@
-*{
-    padding: 0;
+
+
+*, *:before, *:after {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+html,
+body {
+    background-color: #252423;
+    color: #F6F4F2;
+}
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight: 400;
+    font-feature-settings:"tnum" 1, "ss03" 1;
+    -webkit-font-smoothing: antialiased;
 }
 
 ul{
@@ -13,17 +30,35 @@ a{
 }
 
 .setting-bl{
+    display: none;
     max-width: 1030px;
     width: 100%;
     height: 601px;
+    max-height: 400px;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
-    /*background: #ffffff0d;*/
-    background:#ffffff00;
+    background: #ffffff;
+    padding: 11px 6px 22px 6px;
+    box-sizing: border-box;
+}
+
+
+.phone-style{
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    max-width: 1030px;
+    width: 100%;
+    height: 417px;
+    position: absolute;
+    top: 13px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #000000;
     padding: 11px 6px 22px 6px;
     border-radius: 26px;
     box-sizing: border-box;
@@ -143,14 +178,12 @@ a{
 .box {
     width: 206px;
     height: 334px;
-    bottom: 15px;
+    bottom: 60px;
     padding-bottom: 0px;
-
-    right: 15px;
+    right: 40px;
     position: absolute;
     border-radius: 5px;
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
-    /*border: 1px solid rgba(255, 255, 255, 0.3);*/
+    /*box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);*/
     padding-top: 22px;
     text-align: center;
     box-sizing: border-box;
@@ -164,14 +197,14 @@ a{
 }
 
 .box .alisa-box-bg {
-    /*background: #0000009e;*/
-    background: #0e4c65a1;
+    /*background: #000000a1;*/
+    background-image: url(https://cdn6.f-cdn.com/contestentries/1301217/27758306/5acbe984b11d9_thumb900.jpg);
     z-index: 2;
-    width: 100%;
+    width: 95%;
+    position: relative;
+    margin: 0px auto;
     height: auto;
-    /* border: 1px solid rgba(255, 255, 255, 0.3); */
     padding: 2px;
-    /* border-radius: 5px; */
 }
 
 .box .alisa-box-content{
@@ -189,29 +222,30 @@ a{
 }
 
 .alisa-box-actions{
-    width: 99%;
+    width: 95%;
     position: absolute;
     z-index: 4;
-    height: 22px;
-    /*background: #5087d11f;*/
-    background: #007ec070;
-    top: 0;
-    right:2px;
+    margin: 0 auto;
+    height: 18px;
+    /*background: #ffffffa1;*/
+    background-image: url(https://cdn6.f-cdn.com/contestentries/1301217/27758306/5acbe984b11d9_thumb900.jpg);
+    top: 4px;
+    right: 0;
+    left: 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border-radius: 3px 0 0 0;
 }
 
 .alisa-box-actions-item i {
-    font-size: 10px;
+    font-size: 9px;
     color: white;
     cursor: pointer;
 }
 .alisa-box-actions-item{
     cursor: pointer;
-    width: 25px;
-    height: 18px;
+    width: 20px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,6 +253,22 @@ a{
 
 
 .alisa-box-actions-close{
+    /*border-radius: 0 3px 0 0;*/
+    /*background: #d65050;*/
+}
+
+
+.alisa-box-actions-beeg-bl{
+    width: 100%;
+    top: 0;
+    height: 22px;
+    right: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius:0 ;
+}
+
+.alisa-box-actions-close:hover{
     border-radius: 0 3px 0 0;
     background: #d65050;
 }
@@ -314,7 +364,7 @@ a{
     /*left: 8px;*/
 
     position: absolute;
-    left: 25px;
+    left: 20px;
     bottom: 38px;
 }
 
@@ -323,7 +373,7 @@ a{
     /*right: 8px;*/
     /*transform: rotate(180deg);*/
     position: absolute;
-    right: 26px;
+    right: 21px;
     transform: rotate(180deg);
     bottom: 42px;
 }
@@ -375,6 +425,16 @@ a{
     top: 9px;
 }
 
+
+
+
+.alisa_rollup_img{
+    width: 55px;
+    height: 55px;
+    display: block;
+}
+
+
 .alisa_text_bl{
     width: 80%;
     height: 77px;
@@ -394,9 +454,11 @@ a{
 }
 
 .alisa_text_bl_textarea{
+    text-align: center;
     width: 100%;
     height: 100%;
-    color: #999dab;
+    color: #32394d;
+    font-weight: bold;
     font-size: 12px;
     background: #d3d6dd;;
     padding: 7px;
@@ -408,4 +470,22 @@ a{
 
 .alisa_text_bl_textarea:active,.alisa_text_bl_textarea:focus{
     outline:none;
+}
+
+.rollup-box{
+    display: none;
+}
+
+.rollup-alisa-bl{
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 15px;
+    bottom: 15px;
+    top: unset;
+    border-radius: 50%;
+    background: white;
 }

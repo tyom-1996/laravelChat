@@ -11,21 +11,27 @@ $(document).ready(function() {
         $('#voice_wave_left,#voice_wave_right,#animation-wrapper').toggle()
 
         if ($('#box1').hasClass('beeg_box')) {
-            $('#box1').append(`
-                <div id="box2" class="box " style="width: 259px;right: 15px;height: 102px;bottom: 15px;top: unset;box-shadow: 0 0 transparent;">
-                <div class="alisa-box-bg" style="background: transparent;"></div>
-                <div class="alisa-box-content">
-                <div class="voice_wave_left" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
-                <div class="voice_wave_right" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
-<!--                 <div class="microfon_icon_bl" ><i id="microfon_icon" class="fas fa-microphone-alt"></i></div>-->
-                </div></div>
-            `)
-            $('.coordinates').hide();
-            $('.alisa_img').hide();
+            // $('#box1').append(`
+            //     <div id="box2" class="box " style="width: 259px;right: 15px;height: 102px;bottom: 15px;top: unset;box-shadow: 0 0 transparent;">
+            //     <div class="alisa-box-bg" style="background: transparent;"></div>
+            //     <div class="alisa-box-content">
+            //
+            //         <div class="voice_wave_left" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
+            //         <div class="voice_wave_right" style=""><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span><span class="span"></span></div>
+            //         <div class="microfon_icon_bl " ><i id="microfon_icon" class="fas fa-microphone-alt"></i></div>
+            //     </div>
+            //     </div>
+            // `);
+
+            $('.coordinates,.alisa_img,.microfon_icon_bl_mini,.alisa_text_bl,.phone-style').hide();
+            $('.alisa-box-actions').addClass('alisa-box-actions-beeg-bl')
+            $('.setting-bl').show();
         } else {
-            $('.coordinates').show();
-            $('.alisa_img').show();
+            $('.coordinates,.alisa_img,.microfon_icon_bl_mini,.alisa_text_bl,.phone-style').show();
+            $('.setting-bl').hide();
             $('#box2').remove()
+            $('.alisa-box-actions').removeClass('alisa-box-actions-beeg-bl')
+
         }
 
     })
@@ -59,6 +65,24 @@ $(document).ready(function() {
         });
     }
 
-    //ALISA VOICE WAVE
+
+
+    $(document).on('click','.alisa-box-actions-rollup',function(){
+
+        $('#box1').toggleClass('rollup-box')
+
+        if ($('#box1').hasClass('rollup-box')){
+
+            $('body').append(`
+                <div class="rollup-alisa-bl"> 
+                    <img class="alisa_img alisa_rollup_img" src="http://smartimes.ru/wp-content/uploads/2014/09/assistant.png" style="width: 55px;position: absolute;left: 0;right: 0;margin: auto;">
+                </div>
+            `)
+        }else{
+            $('.rollup-actions-bl').remove()
+        }
+
+
+    })
 
 })
